@@ -1,0 +1,107 @@
+E:\Desktop\File gui Dung\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\AVDApplication.exe
+E:\Desktop\File gui Dung\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\AVDApplication.pdb
+E:\Desktop\File gui Dung\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\ResolveAssemblyReference.cache
+E:\Desktop\File gui Dung\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\AVDApplication.ConfirmExport.resources
+E:\Desktop\File gui Dung\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Form2.resources
+E:\Desktop\File gui Dung\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\AVDApplication.MainMenu.resources
+E:\Desktop\File gui Dung\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Properties.Resources.resources
+E:\Desktop\File gui Dung\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\GenerateResource.read.1.tlog
+E:\Desktop\File gui Dung\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\GenerateResource.write.1.tlog
+E:\Desktop\File gui Dung\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\bin\Debug\AVDApplication.exe
+E:\Desktop\File gui Dung\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\bin\Debug\AVDApplication.pdb
+C:\Users\anh\Downloads\Compressed\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\AVDApplication.exe
+C:\Users\anh\Downloads\Compressed\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\AVDApplication.pdb
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\AVDApplication.exe
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\AVDApplication.pdb
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\bin\Debug\AVDApplication.exe
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\bin\Debug\AVDApplication.pdb
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\ResolveAssemblyReference.cache
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\AVDApplication.ConfirmExport.resources
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Form2.resources
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\AVDApplication.MainMenu.resources
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Properties.Resources.resources
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\GenerateResource.read.1.tlog
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz\AVDApplication\AVDApplication\obj\Debug\GenerateResource.write.1.tlog
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.exe
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.pdb
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\AVDApplication.exe
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\AVDApplication.pdb
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\Microsoft.Office.Interop.Excel.dll
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\office.dll
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\Microsoft.Vbe.Interop.dll
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\Microsoft.Office.Interop.Excel.xml
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\office.xml
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\ResolveAssemblyReference.cache
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.ConfirmExport.resources
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Form2.resources
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.MainMenu.resources
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Properties.Resources.resources
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\GenerateResource.read.1.tlog
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.exe
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.pdb
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\AVDApplication.exe
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\AVDApplication.pdb
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.ConfirmExport.resources
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Form2.resources
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.MainMenu.resources
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Properties.Resources.resources
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.AboutBox1.resources
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.exe
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\AVDApplication.exe
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\AVDApplication.pdb
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\Microsoft.Office.Interop.Excel.dll
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\office.dll
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\Microsoft.Vbe.Interop.dll
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\Microsoft.Office.Interop.Excel.xml
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\office.xml
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\ResolveAssemblyReference.cache
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.AboutBox1.resources
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.ConfirmExport.resources
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Form2.resources
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.MainMenu.resources
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Properties.Resources.resources
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\GenerateResource.read.1.tlog
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\GenerateResource.write.1.tlog
+E:\Chuong trinh AVD\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.pdb
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.ConfirmExport.resources
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Form2.resources
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.MainMenu.resources
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Properties.Resources.resources
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.abtAbout.resources
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\RFD Licensed Database to R&S and TCI.exe
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\RFD Licensed Database to R&S and TCI.pdb
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\RFD Licensed Database to R&S and TCI.exe
+C:\Users\ngocanh\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\RFD Licensed Database to R&S and TCI.pdb
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\RFD Licensed Database to R&S and TCI.exe
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\RFD Licensed Database to R&S and TCI.pdb
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\RFD Licensed Database to R&S and TCI.exe
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\RFD Licensed Database to R&S and TCI.pdb
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\ResolveAssemblyReference.cache
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.abtAbout.resources
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.ConfirmExport.resources
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Form2.resources
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.MainMenu.resources
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Properties.Resources.resources
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\GenerateResource.read.1.tlog
+D:\Ngocanh project\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\RFD Licensed Database to R&S and TCI.exe
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\RFD Licensed Database to R&S and TCI.pdb
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\RFD Licensed Database to R&S and TCI.exe
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\RFD Licensed Database to R&S and TCI.pdb
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.abtAbout.resources
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.ConfirmExport.resources
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Form2.resources
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.MainMenu.resources
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.Properties.Resources.resources
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.csproj.GenerateResource.Cache
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\RFD Licensed Database to R&S and TCI.exe.manifest
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\RFD Licensed Database to R&S and TCI.application
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\RFD Licensed Database to R&S and TCI.exe.manifest
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\RFD Licensed Database to R&S and TCI.application
