@@ -105,3 +105,4 @@ C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication
 C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Debug\RFD Licensed Database to R&S and TCI.application
 C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\RFD Licensed Database to R&S and TCI.exe.manifest
 C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\RFD Licensed Database to R&S and TCI.application
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Debug\AVDApplication.GEWConfirmExport.resources

@@ -1269,6 +1269,215 @@ namespace AVDApplication
             return rsFormatTable;
         }
 
+        public DataTable GetGEFrequencyTableOutput(DataTable inputTable, Dictionary<int, ArrayList> listRange)
+        {
+            objUti = new Utilities();
+            DataTable freFormatTable = objUti.GetTemplateTableFrequency();
+
+            if (inputTable != null && inputTable.Rows.Count > 0)
+            {
+                int k = 1;
+                for (int i = 0; i < inputTable.Rows.Count; i++)
+                {
+                    if (listRange.ContainsKey(i))
+                    {
+
+                        ArrayList listfrequencyRange = listRange[i];
+
+                        for (int j = 0; j < listfrequencyRange.Count; j++)
+                        {
+                            // This row does not had range frequency
+                            DataRow row = freFormatTable.NewRow();
+
+                            if (inputTable.Columns.Contains(Constants.TableExport.STT))
+                            {
+                                row[Constants.TableExport.GEWTABLE.FREQUENCY_EXTERNAL_ID] = inputTable.Rows[i][Constants.TableExport.STT].ToString();
+                            }
+
+                            //band width
+                            row[Constants.TableExport.GEWTABLE.TRANSMITTER_EXTERNAL_ID] = k;
+                            if (inputTable.Columns.Contains(Constants.TableExport.DAI_LL))
+                            {
+                                int width = 0;
+                                if (!String.IsNullOrEmpty(inputTable.Rows[i][Constants.TableExport.DAI_LL].ToString()))
+                                {
+                                    string bandwidth = inputTable.Rows[i][Constants.TableExport.DAI_LL].ToString().Trim().Replace(";", "");
+
+                                    if (bandwidth.Contains(Constants.ValueDAILL._16K0F3E))
+                                    {
+                                        width = 25000;
+                                    }
+                                    else if (bandwidth.Contains(Constants.ValueDAILL._11K0F3E) || bandwidth.Contains(Constants.ValueDAILL._6K50) || bandwidth.Contains(Constants.ValueDAILL._6K5F3E))
+                                    {
+                                        width = 12500;
+                                    }
+                                    else
+                                    {
+                                        width = 25000;
+                                    }
+                                }
+                                else
+                                {
+                                    width = 0;
+                                }
+                                row[Constants.TableExport.GEWTABLE.BANDWIDTH] = width;
+                                row[Constants.TableExport.GEWTABLE.CHANNEL_SPACE] = width;
+                            }
+
+                            // Frequency
+                            row[Constants.TableExport.GEWTABLE.CENTRE_FREQUENCY] = Convert.ToDouble(listfrequencyRange[j]);
+
+                            // Dich vu
+                            if (inputTable.Columns.Contains(Constants.TableExport.MUC_DICH_SU_DUNG))
+                            {
+                                if (!String.IsNullOrEmpty(inputTable.Rows[i][Constants.TableExport.MUC_DICH_SU_DUNG].ToString()))
+                                {
+                                    string dichvuValue = inputTable.Rows[i][Constants.TableExport.MUC_DICH_SU_DUNG].ToString().Trim().Replace(";", "");
+                                    row[Constants.TableExport.GEWTABLE.CHANNEL_NAME] = dichvuValue;
+                                }
+                                else
+                                {
+                                    // Null or emty --> set to BC
+                                    row[Constants.TableExport.GEWTABLE.CHANNEL_NAME] = "";
+                                }
+                            }
+                            else
+                            {
+                                // Null or emty --> set to BC
+                                row[Constants.TableExport.GEWTABLE.CHANNEL_NAME] = "";
+                            }
+                            k++;
+                            freFormatTable.Rows.Add(row);
+                        }
+
+                    }
+                    else
+                    {
+                        // This row does not had range frequency
+                        DataRow row = freFormatTable.NewRow();
+
+                        row[Constants.TableExport.GEWTABLE.TRANSMITTER_EXTERNAL_ID] = k;
+                        k++;
+                        // Add row
+                        freFormatTable.Rows.Add(row);
+                    }
+                }
+            }
+
+            return freFormatTable;
+
+        }
+
+        public DataTable GetGETranmisterTableOutput(DataTable inputTable, Dictionary<int, ArrayList> listRange)
+        {
+            objUti = new Utilities();
+            DataTable freFormatTable = objUti.GetTemplateTableTranmister();
+
+            if (inputTable != null && inputTable.Rows.Count > 0)
+            {
+                int k = 1;
+                for (int i = 0; i < inputTable.Rows.Count; i++)
+                {
+                    if (listRange.ContainsKey(i))
+                    {
+
+                        ArrayList listfrequencyRange = listRange[i];
+
+                        for (int j = 0; j < listfrequencyRange.Count; j++)
+                        {
+                            // This row does not had range frequency
+                            DataRow row = freFormatTable.NewRow();
+
+                            
+
+                            //band width
+                            row[Constants.TableExport.GEWTABLE.TRANSMITTER_EXTERNAL_ID] = k;
+                            
+                            // Five columns normal
+                            if (!String.IsNullOrEmpty(inputTable.Rows[i][Constants.TableExport.TEN_KHACH_HANG].ToString()))
+                            {
+                                row[Constants.TableExport.GEWTABLE.NAME] =
+                                    inputTable.Rows[i][Constants.TableExport.TEN_KHACH_HANG].ToString().Trim().Replace(
+                                        ";", "");
+                            }
+                            else
+                            {
+                                row[Constants.TableExport.GEWTABLE.NAME] = Constants.ValueConstant.SPACE;
+                            }
+
+
+                            // Five columns normal
+                            if (!String.IsNullOrEmpty(inputTable.Rows[i][Constants.TableExport.MAU_GIAY_PHEP].ToString()))
+                            {
+                                row[Constants.TableExport.GEWTABLE.TYPE] =
+                                    inputTable.Rows[i][Constants.TableExport.MAU_GIAY_PHEP].ToString().Trim().Replace(
+                                        ";", "");
+                            }
+                            else
+                            {
+                                row[Constants.TableExport.GEWTABLE.TYPE] = Constants.ValueConstant.SPACE;
+                            }
+
+
+                            // Xu ly kinh do vi do
+                            // Longtitude and latitude
+                            string[] kinhdoVidoArr =
+                                objUti.GetKinhdoAndVido(inputTable.Rows[i][Constants.TableExport.KINHDO_VIDO].ToString().Trim());
+                            if (kinhdoVidoArr[1] != Constants.ValueConstant.RANDOM)
+                            {
+                                // Get normal
+                                row[Constants.TableExport.GEWTABLE.LATITUDE] = objUti.FormatLatitude(kinhdoVidoArr[1].Trim(), Constants.ValueConstant.NORMAL);
+
+                            }
+                            else
+                            {
+                                // Call random value;
+                                row[Constants.TableExport.GEWTABLE.LATITUDE] = objUti.FormatLatitude(kinhdoVidoArr[1].Trim(), Constants.ValueConstant.RANDOM);
+                            }
+
+                            if (kinhdoVidoArr[0] != Constants.ValueConstant.RANDOM)
+                            {
+                                row[Constants.TableExport.GEWTABLE.LONGITUDE] = objUti.FormatLongtitude(kinhdoVidoArr[0].Trim(), Constants.ValueConstant.NORMAL);
+                            }
+                            else
+                            {
+                                row[Constants.TableExport.GEWTABLE.LONGITUDE] = objUti.FormatLongtitude(kinhdoVidoArr[0].Trim(), Constants.ValueConstant.RANDOM);
+                            }
+
+                            if (!String.IsNullOrEmpty(inputTable.Rows[i][Constants.TableExport.MUC_DICH_SU_DUNG].ToString()))
+                            {
+                                row[Constants.TableExport.GEWTABLE.COMMENT] =
+                                    inputTable.Rows[i][Constants.TableExport.MUC_DICH_SU_DUNG].ToString().Trim().Replace(
+                                        ";", "");
+                            }
+                            else
+                            {
+                                row[Constants.TableExport.GEWTABLE.TYPE] = Constants.ValueConstant.SPACE;
+                            }
+                            k++;
+                            freFormatTable.Rows.Add(row);
+                        }
+
+                    }
+                    else
+                    {
+                        // This row does not had range frequency
+                        DataRow row = freFormatTable.NewRow();
+
+                        row[Constants.TableExport.GEWTABLE.TRANSMITTER_EXTERNAL_ID] = k;
+                        k++;
+                        // Add row
+                        freFormatTable.Rows.Add(row);
+                    }
+                }
+            }
+
+            return freFormatTable;
+
+        }
+
+        
+
         private DataRow RSDataRow(string tanso, DataRow row, DataTable inputTable, int i)
         {
             #region 5 Fields of set 1
@@ -1676,6 +1885,57 @@ namespace AVDApplication
             }
 
             #endregion
+
+            return row;
+        }
+
+        private DataRow FreDataRow(string tanso, DataRow row, DataTable inputTable, int i)
+        {
+
+            // Frequency
+            row[Constants.TableExport.TAN_SO] = objUti.FormatFrequency(tanso);
+            //row[Constants.TableExport.TAN_SO] = Convert.ToDouble(listfrequencyRange[j]);
+
+            // Dich vu
+            if (inputTable.Columns.Contains(Constants.TableExport.MUC_DICH_SU_DUNG))
+            {
+                if (!String.IsNullOrEmpty(inputTable.Rows[i][Constants.TableExport.MUC_DICH_SU_DUNG].ToString()))
+                {
+                    string dichvuValue = inputTable.Rows[i][Constants.TableExport.MUC_DICH_SU_DUNG].ToString().Trim().Replace(";", "");
+
+                    row[Constants.TableExport.MUC_DICH_SU_DUNG] = dichvuValue;
+                }
+                else
+                {
+                    // Null or emty --> set to 200.000(Hz)
+                    row[Constants.TableExport.MUC_DICH_SU_DUNG] = "BC";
+                }
+            }
+            else
+            {
+                // Null or emty --> set to 200.000(Hz)
+                row[Constants.TableExport.MUC_DICH_SU_DUNG] = "BC";
+            }
+
+            
+
+           
+            // 5 fields of set 2
+            // Ho Hieu
+            if (!String.IsNullOrEmpty(inputTable.Rows[i][Constants.TableExport.DAI_LL].ToString()))
+            {
+                string hohieuValue = inputTable.Rows[i][Constants.TableExport.DAI_LL].ToString().Trim().Replace(";", "");
+                
+
+                row[Constants.TableExport.DAI_LL] = hohieuValue;
+            }
+            else
+            {
+                // Null or emty -->space
+                row[Constants.TableExport.DAI_LL] = Constants.ValueConstant.SPACE;
+            }
+
+            
 
             return row;
         }

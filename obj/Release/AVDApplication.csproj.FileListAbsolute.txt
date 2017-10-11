@@ -8,18 +8,18 @@ D:\STUDY\NgocAnh\AVDApplication\AVDApplication\obj\Release\AVDApplication.csproj
 D:\STUDY\NgocAnh\AVDApplication\AVDApplication\obj\Release\AVDApplication.exe
 D:\STUDY\NgocAnh\AVDApplication\AVDApplication\obj\Release\AVDApplication.pdb
 D:\STUDY\NgocAnh\AVDApplication\AVDApplication\obj\Release\AVDApplication.ConfirmExport.resources
-C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Release\RFD Licensed Database to R&S and TCI.exe.manifest
-C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Release\RFD Licensed Database to R&S and TCI.application
-C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Release\RFD Licensed Database to R&S and TCI.exe
-C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Release\RFD Licensed Database to R&S and TCI.pdb
 C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\AVDApplication.abtAbout.resources
 C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\AVDApplication.ConfirmExport.resources
 C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\AVDApplication.Form2.resources
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\AVDApplication.GEWConfirmExport.resources
 C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\AVDApplication.MainMenu.resources
 C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\AVDApplication.Properties.Resources.resources
 C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\AVDApplication.csproj.GenerateResource.Cache
-C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\RFD Licensed Database to R&S and TCI.exe.manifest
-C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\RFD Licensed Database to R&S and TCI.application
-C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\RFD Licensed Database to R&S and TCI.exe
-C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\RFD Licensed Database to R&S and TCI.pdb
-C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\AVDApplication.csprojResolveAssemblyReference.cache
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Release\RFD DB Convert.exe.manifest
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Release\RFD DB Convert.application
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Release\RFD DB Convert.exe
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\bin\Release\RFD DB Convert.pdb
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\RFD DB Convert.exe.manifest
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\RFD DB Convert.application
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\RFD DB Convert.exe
+C:\Users\Ngoc\Desktop\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication_0820_tach 5KHz va 100Khz_sua\AVDApplication\AVDApplication\obj\Release\RFD DB Convert.pdb

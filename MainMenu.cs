@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
 
 
 namespace AVDApplication
@@ -21,6 +22,7 @@ namespace AVDApplication
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
+            
             //cmbChooseFreq.DataSource 
             List<string> freqRange = new List<string>();
             freqRange.Add(Constants.FreqAndStep.FrequencyDisplay.FREQ_HF_9_30);
@@ -177,6 +179,7 @@ namespace AVDApplication
                 }
 
                 // Enable button
+                imgTCI.Visible = false;
                 btnCheckError.Enabled = true;
                 btnFormat.Enabled = false;
                 btnCorrectError.Enabled = false;
@@ -732,6 +735,23 @@ namespace AVDApplication
                         row.DefaultCellStyle.BackColor = Color.Yellow;
                         btnRSCorrectError.Enabled = true;
                     }
+                    //Mau giay phep
+                    if (!String.IsNullOrEmpty(dtSource.Rows[i][Constants.TableExport.MAU_GIAY_PHEP].ToString()) )
+                    {
+                        string maugiayphep = (dtSource.Rows[i][Constants.TableExport.MAU_GIAY_PHEP].ToString());
+                        if (maugiayphep == Constants.ValueConstant.DAI_TAU)
+                        {
+                            // Had error
+                            IsValidate = false;
+                            dgRSDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].ErrorText =
+                                "Ten khach hang error";
+                            DataGridViewRow row = dgRSDetailInformation.Rows[i];
+                            row.DefaultCellStyle.BackColor = Color.Yellow;
+                            btnRSCorrectError.Enabled = true;
+                        }
+ 
+                    }
+
                 }
             }
             btnRSCorrectError.Enabled = true;
@@ -868,6 +888,20 @@ namespace AVDApplication
                     {
                         string maugiayphep = dgDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].Value.ToString().Trim();
                         if (maugiayphep != Constants.ValueConstant.THTS && maugiayphep != Constants.ValueConstant.THTT)
+                        {
+                            IsValidate = false;
+
+                            dgDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].ToolTipText = "Error";
+                            dgDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].ErrorText = "Error";
+                            DataGridViewRow row = dgDetailInformation.Rows[i];
+                            row.DefaultCellStyle.BackColor = Color.Yellow;
+                            btnCorrectError.Enabled = true;
+                        }
+                    }
+                    if (valueCombobox == Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_DR_137_174 || valueCombobox == Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_DR_400_470)
+                    {
+                        string maugiayphep = dgDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].Value.ToString().Trim();
+                        if (maugiayphep == Constants.ValueConstant.DAI_TAU)
                         {
                             IsValidate = false;
 
@@ -1043,10 +1077,29 @@ namespace AVDApplication
                     //        btnGECorrectError.Enabled = true;
                     //    }
                     //}
+                    string valueCombobox = cmbGEChooseFreq.SelectedItem.ToString();
+                    if (valueCombobox == Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_DR_137_174 || valueCombobox == Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_DR_400_470)
+                    {
+                        if (!String.IsNullOrEmpty(dtSource.Rows[i][Constants.TableExport.MAU_GIAY_PHEP].ToString()))
+                        {
+                            string maugiayphep = dtSource.Rows[i][Constants.TableExport.MAU_GIAY_PHEP].ToString();
+                            if (maugiayphep == Constants.ValueConstant.DAI_TAU)
+                            {
+                                IsValidate = false;
+                                dgGEDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].ToolTipText = "Error";
+                                dgGEDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].ErrorText =
+                                    "Test thu ErrorText";
+                                DataGridViewRow row = dgGEDetailInformation.Rows[i];
+                                row.DefaultCellStyle.BackColor = Color.Yellow;
+                                btnGECorrectError.Enabled = true;
+                            }
+                        }
+                        
+                    }
 
                 }
             }
-            btnCorrectError.Enabled = true;
+            btnGECorrectError.Enabled = true;
             return IsValidate;
         }
         /// <summary>
@@ -1210,6 +1263,26 @@ namespace AVDApplication
                                 //dgDetailInformation.Rows.RemoveAt(i);
                                 dtSource.Rows.RemoveAt(i);
                                 isMustReBindDataSource = true;
+                            }
+                        }
+                    }
+                    if (valueCombobox == Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_DR_137_174 || valueCombobox == Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_DR_400_470)
+                    {
+                        if (dgDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].Value != null)
+                        {
+                            string maugiayphep =
+                                dgDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].Value.ToString().
+                                    Trim();
+                            if (maugiayphep == Constants.ValueConstant.DAI_TAU)
+                            {
+                                dgDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].Value = string.Empty;
+                                // Remove row
+                                //dgDetailInformation.Rows.RemoveAt(i);
+                                dgDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].ErrorText = string.Empty;
+                                //    "Test thu ErrorText";
+                                DataGridViewRow row = dgDetailInformation.Rows[i];
+                                row.DefaultCellStyle.BackColor = Color.White;
+                                btnCorrectError.Enabled = true;
                             }
                         }
                     }
@@ -1802,6 +1875,7 @@ namespace AVDApplication
         private List<string> listTCIExport = null;
         private List<string> listGEWExport = null;
 
+
         private void btnShow_Click(object sender, EventArgs e)
         {
             //OutFormatBO objFormat = new OutFormatBO();
@@ -1916,6 +1990,7 @@ namespace AVDApplication
 
             double dStep = Convert.ToDouble(cmbFreqStep.SelectedItem.ToString());
             List<string> list = new List<string>();
+            List<string> listSplit = new List<string>();
             listTCIExport = new List<string>();
             DataTable tbTCIInfo = (DataTable)dgDetailInformation.DataSource;
             if (tbTCIInfo != null && tbTCIInfo.Rows.Count > 0)
@@ -1978,48 +2053,131 @@ namespace AVDApplication
                     }
                 }
             }
-
-            listTCIExport = list;
-
-            // Get source
-            if (listTCIExport != null && listTCIExport.Count > 0)
+            List<List<string>> allList = SplitIntoChunks(list, 100);
+            bool isFirst = true;
+            string pathsv = "";
+            var charsToRemove = new string[] { "lic", "dbl" };
+            int numberfile = 1;
+            bool isLic = true;
+            foreach (List<string> splList in allList)
             {
-                List<string> lines = listTCIExport;
-
-                // Save file
-                SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "Export file (*.lic)|*.lic|Export file (*.dbl)|*.dbl";
-                dialog.Title = "Save file type.";
-
-                string pathSave = default(string);
-
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                listTCIExport = splList;
+                if (listTCIExport != null && listTCIExport.Count > 0)
                 {
-                    pathSave = dialog.FileName;
-                }
-
-                if (!String.IsNullOrEmpty(pathSave))
-                {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(pathSave))
+                    List<string> lines = listTCIExport;
+                    string pathSave = default(string);
+                    
+                    if (isFirst)
                     {
-                        foreach (string line in lines)
+                        // Save file
+                        SaveFileDialog dialog = new SaveFileDialog();
+                        dialog.Filter = "Export file (*.lic)|*.lic|Export file (*.dbl)|*.dbl";
+                        dialog.Title = "Save file type.";
+
+
+
+                        if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
-                            // Writer into file
-                            file.WriteLine(line);
+                            pathSave = dialog.FileName;
+                            pathsv = dialog.FileName;
                         }
+
+                        if (!String.IsNullOrEmpty(pathSave))
+                        {
+                            Console.WriteLine(pathSave);
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(pathSave))
+                            {
+                                foreach (string row in lines)
+                                {
+                                    // Writer into file
+                                    file.WriteLine(row);
+                                }
+                            }
+                        }
+                        listTCIExport.Clear();
+                        lines.Clear();
+                        listSplit.Clear();
+                        isFirst = false;
+                    }
+                    else
+                    {
+                        
+                        string pth = pathsv;
+                        Console.WriteLine("pth: " + pth);
+                        Console.WriteLine("pathsv: " + pathsv);
+                        string extension;
+                        extension = Path.GetExtension(pathsv);
+                        foreach (var c in charsToRemove)
+                        {
+                            pth = pth.Replace(c, string.Empty);
+                        }
+                        if (extension == ".lic")
+                        {
+                            isLic = true;
+                        }
+                        else if (extension == ".dbl")
+                        {
+                            isLic = false;
+                        }
+                        if (isLic)
+                        {
+                            pth = pth + "(" + numberfile + ").lic";
+                        }
+                        else
+                        {
+                            pth = pth + "(" + numberfile + ").dbl";
+                        }
+                        numberfile++;
+
+                        if (!String.IsNullOrEmpty(pth))
+                        {
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(pth))
+                            {
+                                foreach (string row in lines)
+                                {
+                                    // Writer into file
+                                    file.WriteLine(row);
+                                }
+                            }
+                        }
+                        listTCIExport.Clear();
+                        lines.Clear();
+                        listSplit.Clear();
                     }
 
-                    MessageBox.Show("Convert Sucessful", "Message box", MessageBoxButtons.OK);
-                    btnImport.Enabled = true;
-                    btnShow.Enabled = true;
-                    btnCorrectError.Enabled = false;
-                    btnFormat.Enabled = true;
-                    button9.Enabled = true;
-                    btnExport.Enabled = true;
                 }
+            }
+                
 
+                        MessageBox.Show("Convert Sucessful", "Message box", MessageBoxButtons.OK);
+                        btnImport.Enabled = true;
+                        btnShow.Enabled = true;
+                        btnCorrectError.Enabled = false;
+                        btnFormat.Enabled = true;
+                        button9.Enabled = true;
+                        btnExport.Enabled = true;
+                  
+
+        }
+
+        public static List<List<T>> SplitIntoChunks<T>(List<T> list, int chunkSize)
+        {
+            if (chunkSize <= 0)
+            {
+                throw new ArgumentException("chunkSize must be greater than 0.");
             }
 
+            List<List<T>> retVal = new List<List<T>>();
+            int index = 0;
+            while (index < list.Count)
+            {
+                int count = list.Count - index > chunkSize ? chunkSize : list.Count - index;
+                retVal.Add(list.GetRange(index, count));
+
+                index += chunkSize;
+            }
+
+            return retVal;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2248,6 +2406,28 @@ namespace AVDApplication
                         DataGridViewRow row = dgRSDetailInformation.Rows[i];
                         row.DefaultCellStyle.BackColor = Color.White;
                     }
+
+                    //Mau giay phep
+                    if (!String.IsNullOrEmpty(dtSource.Rows[i][Constants.TableExport.MAU_GIAY_PHEP].ToString()))
+                    {
+                        if (dtSource.Rows[i][Constants.TableExport.MAU_GIAY_PHEP].ToString() == Constants.ValueConstant.DAI_TAU)
+                        {
+
+                            dgRSDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].Value = String.Empty;
+                            dgRSDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].ErrorText = string.Empty;
+                            DataGridViewRow row = dgRSDetailInformation.Rows[i];
+                            row.DefaultCellStyle.BackColor = Color.White;
+                        }
+                    }
+                    else
+                    {
+
+                        dgRSDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].Value = string.Empty;
+                        dgRSDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].ErrorText =
+                            string.Empty;
+                        DataGridViewRow row = dgRSDetailInformation.Rows[i];
+                        row.DefaultCellStyle.BackColor = Color.White;
+                    }
                     //IsValidate = IsValidate && !hasError;
 
                     //// If is not validate 
@@ -2288,7 +2468,9 @@ namespace AVDApplication
         }
 
         private bool isMustCheckRS = true;
+        private bool isMustCheckGEW = true;
         private bool canExportCSV = false;
+        private bool isExportTran = true;
 
         private string GetSheetName(string fileName)
         {
@@ -2366,7 +2548,7 @@ namespace AVDApplication
                 button8.Enabled = false;
                 btnRSExport.Enabled = false;
                 btnRSShow.Enabled = false;
-
+                imgRS.Visible = false;
                 // Reset can export value
                 canExportCSV = false;
 
@@ -3323,6 +3505,7 @@ namespace AVDApplication
         }
 
         private ConfirmExport confirmExport;
+        private GEWConfirmExport GEWconfirmExport;
         //  private abtAbout AboutBox;
         private void btnRSExport_Click(object sender, EventArgs e)
         {
@@ -5026,7 +5209,405 @@ namespace AVDApplication
 
         private void btnTranFormat_Click(object sender, EventArgs e)
         {
+            //Set can export CSV
+            isExportTran = true;
+            OutFormatBO objFormat = new OutFormatBO();
 
+            allListRange = new Dictionary<int, ArrayList>();
+
+            bool isValidate = CheckErrorGEW();
+
+            if (isValidate)
+            {
+                // Check value of combobox
+                string valueCombobox = cmbGEChooseFreq.SelectedItem.ToString();
+                double dStep = Convert.ToDouble(cmbGEStep.SelectedItem.ToString()) * 1000;
+                DataTable dtGrid = null;
+                Utilities utilities = new Utilities();
+                string strStart = cmbGEChooseFreq.SelectedItem.ToString();
+                // Convert NewStart to OldStart
+                strStart = strStart.Replace("KHz", "");
+                strStart = strStart.Replace("MHz", "");
+                strStart = strStart.Replace(" ", "");
+                strStart = strStart.Replace("-", "_");
+
+                if (dtGESource != null)
+                    dtGrid = dtGESource;
+                else
+                {
+                    dtGrid = (DataTable)dgGEDetailInformation.DataSource;
+                }
+                for (int i = 0; i < dtGrid.Rows.Count; i++)
+                {
+                    string strFreq = dtGrid.Rows[i][Constants.TableExport.TAN_SO].ToString();
+
+                    bool hasError = false;
+
+                    Dictionary<int, ArrayList> arrFreqByRow = utilities.GetFrequencyByRange(strStart, dStep, strFreq, i,
+                                                                                            ref hasError);
+
+                    // Add arraylist with no error
+                    if (!hasError && !allListRange.ContainsKey(i) && arrFreqByRow[i] != null && arrFreqByRow[i].Count > 0)
+                    {
+                        allListRange.Add(i, arrFreqByRow[i]);
+                    }
+                }
+
+                switch (valueCombobox)
+                {
+                    case (Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_TTKD_47_50):
+                        #region FREQ_TTKD_47_50
+                        // FM range
+                        // Get allListRage
+                        if (allListRange != null
+                            && allListRange.Count > 0)
+                        {
+                            for (int i = 0; i < allListRange.Count; i++)
+                            {
+                                // Create freq upper and lower
+                                ArrayList arrFreq = allListRange[i];
+
+                                ArrayList arrFreqTemp = new ArrayList();
+                                bool hasChange = false;
+                                for (int j = 0; j < arrFreq.Count; j++)
+                                {
+                                    double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                }
+                                if (hasChange)
+                                {
+                                    foreach (var list in arrFreqTemp)
+                                    {
+                                        if (!arrFreq.Contains(list))
+                                            arrFreq.Add(list);
+                                    }
+                                    allListRange[i] = arrFreq;
+                                }
+
+                            }
+                        }
+                        break;
+                        #endregion
+                    case (Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_TTKD_54_68):
+                        #region FREQ_TTKD_54_68
+                        // FM range
+                        // Get allListRage
+                        if (allListRange != null
+                            && allListRange.Count > 0)
+                        {
+                            for (int i = 0; i < allListRange.Count; i++)
+                            {
+                                // Create freq upper and lower
+                                ArrayList arrFreq = allListRange[i];
+
+                                ArrayList arrFreqTemp = new ArrayList();
+                                bool hasChange = false;
+                                for (int j = 0; j < arrFreq.Count; j++)
+                                {
+                                    double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                }
+                                if (hasChange)
+                                {
+                                    foreach (var list in arrFreqTemp)
+                                    {
+                                        if (!arrFreq.Contains(list))
+                                            arrFreq.Add(list);
+                                    }
+                                    allListRange[i] = arrFreq;
+                                }
+
+                            }
+                        }
+                        break;
+                        #endregion
+                    case (Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_PT_87_108):
+                        #region FREQ_PT_87_108
+                        // FM range
+                        // Get allListRage
+                        if (allListRange != null
+                            && allListRange.Count > 0)
+                        {
+                            for (int i = 0; i < allListRange.Count; i++)
+                            {
+                                // Create freq upper and lower
+                                ArrayList arrFreq = allListRange[i];
+
+                                ArrayList arrFreqTemp = new ArrayList();
+                                bool hasChange = false;
+                                for (int j = 0; j < arrFreq.Count; j++)
+                                {
+                                    double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                }
+                                if (hasChange)
+                                {
+                                    foreach (var list in arrFreqTemp)
+                                    {
+                                        if (!arrFreq.Contains(list))
+                                            arrFreq.Add(list);
+                                    }
+                                    allListRange[i] = arrFreq;
+                                }
+
+                            }
+                        }
+                        break;
+                        #endregion
+                    case (Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_DR_137_174):
+                        #region FREQ_DR_137_174
+                        // FM range
+                        // Get allListRage
+                        if (allListRange != null
+                            && allListRange.Count > 0)
+                        {
+                            for (int i = 0; i < allListRange.Count; i++)
+                            {
+                                // Create freq upper and lower
+                                ArrayList arrFreq = allListRange[i];
+
+                                ArrayList arrFreqTemp = new ArrayList();
+                                bool hasChange = false;
+                                for (int j = 0; j < arrFreq.Count; j++)
+                                {
+                                    double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                }
+                                if (hasChange)
+                                {
+                                    foreach (var list in arrFreqTemp)
+                                    {
+                                        if (!arrFreq.Contains(list))
+                                            arrFreq.Add(list);
+                                    }
+                                    allListRange[i] = arrFreq;
+                                }
+
+                            }
+                        }
+                        break;
+                        #endregion
+                    case (Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_TH_174_230):
+                        #region FREQ_TH_174_230
+                        // Analog, Digital TV
+                        // Get allListRage
+                        if (allListRange != null
+                            && allListRange.Count > 0)
+                        {
+                            for (int i = 0; i < allListRange.Count; i++)
+                            {
+                                // Create freq Begin and End frequency
+                                ArrayList arrFreq = allListRange[i];
+                                bool hasChange = false;
+                                if (dtGrid != null
+                                    && dtGrid.Rows != null
+                                    && dtGrid.Rows.Count > 0)
+                                {
+                                    ArrayList arrFreqTemp = new ArrayList();
+                                    Utilities util = new Utilities();
+                                    if (util.MachTDMB(dtGrid.Rows[i][Constants.TableExport.HO_HIEU].ToString().Trim()))
+                                    {
+                                        //arrFreqTemp = arrFreq;
+                                        for (int j = 0; j < arrFreq.Count; j++)
+                                        {
+                                            double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                        }
+                                        if (hasChange)
+                                        {
+                                            // Clear old data
+                                            arrFreq.Clear();
+
+                                            foreach (var list in arrFreqTemp)
+                                            {
+                                                if (!arrFreq.Contains(list))
+                                                    arrFreq.Add(list);
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (dtGrid.Rows[i][Constants.TableExport.MAU_GIAY_PHEP].ToString().Trim() == Constants.ValueConstant.THTS)
+                                        {
+                                            //arrFreqTemp = arrFreq;
+                                            for (int j = 0; j < arrFreq.Count; j++)
+                                            {
+                                                double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                            }
+                                            if (hasChange)
+                                            {
+                                                foreach (var list in arrFreqTemp)
+                                                {
+                                                    if (!arrFreq.Contains(list))
+                                                        arrFreq.Add(list);
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (arrFreq != null && arrFreq.Count == 2)
+                                            {
+                                                //arrFreqTemp = arrFreq;
+                                                // Create freq base
+                                                // fBase = ((f1 + f2)-1)/2;
+                                                double freqBase = ((Convert.ToDouble(arrFreq[0]) + Convert.ToDouble(arrFreq[1])) - 1000000) / 2;
+
+
+                                            }
+
+                                            if (hasChange)
+                                            {
+                                                foreach (var list in arrFreqTemp)
+                                                {
+                                                    if (!arrFreq.Contains(list))
+                                                        arrFreq.Add(list);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    if (hasChange)
+                                    {
+                                        allListRange[i] = arrFreq;
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                        #endregion
+                    case (Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_DR_400_470):
+                        #region FREQ_DR_400_470
+                        // FM range
+                        // Get allListRage
+                        if (allListRange != null
+                            && allListRange.Count > 0)
+                        {
+                            for (int i = 0; i < allListRange.Count; i++)
+                            {
+                                // Create freq upper and lower
+                                ArrayList arrFreq = allListRange[i];
+
+                                ArrayList arrFreqTemp = new ArrayList();
+                                bool hasChange = false;
+                                for (int j = 0; j < arrFreq.Count; j++)
+                                {
+                                    double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                }
+                                if (hasChange)
+                                {
+                                    foreach (var list in arrFreqTemp)
+                                    {
+                                        if (!arrFreq.Contains(list))
+                                            arrFreq.Add(list);
+                                    }
+                                    allListRange[i] = arrFreq;
+                                }
+
+                            }
+                        }
+                        break;
+                        #endregion
+                    case (Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_TH_470_790):
+                        #region FREQ_TH_470_790
+                        // Analog, Digital TV
+                        // Get allListRage
+                        if (allListRange != null
+                            && allListRange.Count > 0)
+                        {
+                            for (int i = 0; i < allListRange.Count; i++)
+                            {
+                                // Create freq Begin and End frequency
+                                ArrayList arrFreq = allListRange[i];
+                                bool hasChange = false;
+                                if (dtGrid != null
+                                    && dtGrid.Rows != null
+                                    && dtGrid.Rows.Count > 0)
+                                {
+                                    ArrayList arrFreqTemp = new ArrayList();
+                                    if (dtGrid.Rows[i][Constants.TableExport.MAU_GIAY_PHEP].ToString().Trim() == Constants.ValueConstant.THTS)
+                                    {
+                                        //arrFreqTemp = arrFreq;
+                                        for (int j = 0; j < arrFreq.Count; j++)
+                                        {
+                                            double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                        }
+                                        if (hasChange)
+                                        {
+                                            foreach (var list in arrFreqTemp)
+                                            {
+                                                if (!arrFreq.Contains(list))
+                                                    arrFreq.Add(list);
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (arrFreq != null && arrFreq.Count == 2)
+                                        {
+                                            //arrFreqTemp = arrFreq;
+                                            // Create freq base
+                                            // fBase = ((f1 + f2)-1)/2;
+                                            double freqBase = ((Convert.ToDouble(arrFreq[0]) + Convert.ToDouble(arrFreq[1])) - 1000000) / 2;
+
+
+                                        }
+
+                                        if (hasChange)
+                                        {
+                                            foreach (var list in arrFreqTemp)
+                                            {
+                                                if (!arrFreq.Contains(list))
+                                                    arrFreq.Add(list);
+                                            }
+                                        }
+                                    }
+                                }
+                                if (hasChange)
+                                {
+                                    allListRange[i] = arrFreq;
+                                }
+
+                            }
+                        }
+                        break;
+                        #endregion
+                    default:
+                        //// Action default
+                        //dgDetailInformation.DataSource = objFormat.GetTCITableOutput((DataTable)dgDetailInformation.DataSource,
+                        //                                                     allListRange);
+                        break;
+
+                }
+
+                // Common action// Action default
+                dgGEDetailInformation.DataSource = null;
+                dgGEDetailInformation.DataSource = objFormat.GetGETranmisterTableOutput(dtGrid, allListRange);
+
+                btnGEShow.Enabled = true;
+                buttonGExport.Enabled = true;
+                btnTranFormat.Enabled = true;
+                btnGEImport.Enabled = true;
+                btnFrequencies.Enabled = true;
+                btnGECheckError.Enabled = false;
+                btnGECorrectError.Enabled = false;
+                dgGEDetailInformation.ReadOnly = true;
+
+                // Set can export 
+                canExportCSV = true;
+
+            }
+            else
+            {
+                // Check error
+                btnGECheckError.Enabled = true;
+                btnGEImport.Enabled = true;
+                btnFrequencies.Enabled = false;
+                btnTranFormat.Enabled = false;
+                btnGEShow.Enabled = false;
+
+            }
         }
 
         private void cmbGEChooseFreq_SelectedIndexChanged(object sender, EventArgs e)
@@ -5105,7 +5686,7 @@ namespace AVDApplication
 
                 // Enable button
                 btnGECheckError.Enabled = true;
-                
+                imgGEW.Visible = false;
             }
         }
 
@@ -5281,6 +5862,29 @@ namespace AVDApplication
                         }
                     }
 
+                    if (valueCombobox == Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_DR_137_174 || valueCombobox == Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_DR_400_470)
+                    {
+                        if (!String.IsNullOrEmpty(dtSource.Rows[i][Constants.TableExport.MAU_GIAY_PHEP].ToString()))
+                        {
+                            if (dtSource.Rows[i][Constants.TableExport.MAU_GIAY_PHEP].ToString() == Constants.ValueConstant.DAI_TAU)
+                            {
+
+                                dgGEDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].Value = String.Empty;
+                                dgGEDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].ErrorText = string.Empty;
+                                DataGridViewRow row = dgGEDetailInformation.Rows[i];
+                                row.DefaultCellStyle.BackColor = Color.White;
+                            }
+                        }
+                        else
+                        {
+
+                            dgGEDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].Value = string.Empty;
+                            dgGEDetailInformation.Rows[i].Cells[Constants.TableExport.MAU_GIAY_PHEP].ErrorText =
+                                string.Empty;
+                            DataGridViewRow row = dgGEDetailInformation.Rows[i];
+                            row.DefaultCellStyle.BackColor = Color.White;
+                        }
+                    }
                 }
             }
             if (hasUnExpectedError)
@@ -5300,6 +5904,602 @@ namespace AVDApplication
             btnTranFormat.Enabled = true;
             btnFrequencies.Enabled = true;
             dtGESource = (DataTable)dgGEDetailInformation.DataSource;
+        }
+
+        private void btnFrequencies_Click(object sender, EventArgs e)
+        {
+            //Set can export CSV
+            isExportTran = false;
+            OutFormatBO objFormat = new OutFormatBO();
+
+            allListRange = new Dictionary<int, ArrayList>();
+            bool isValidate = true;
+
+            if (isMustCheckRS)
+            {
+                isValidate = CheckErrorRS();
+            }
+
+            if (isValidate)
+            {
+                // Check value of combobox
+                string valueCombobox = cmbGEChooseFreq.SelectedItem.ToString();
+                double dStep = Convert.ToDouble(cmbGEStep.SelectedItem.ToString()) * 1000;
+                DataTable dtGrid = null;
+                Utilities utilities = new Utilities();
+                string strStart = cmbGEChooseFreq.SelectedItem.ToString();
+                // Convert NewStart to OldStart
+                strStart = strStart.Replace("KHz", "");
+                strStart = strStart.Replace("MHz", "");
+                strStart = strStart.Replace(" ", "");
+                strStart = strStart.Replace("-", "_");
+
+                if (dtGESource != null)
+                    dtGrid = dtGESource;
+                else
+                {
+                    dtGrid = (DataTable)dgGEDetailInformation.DataSource;
+                }
+                for (int i = 0; i < dtGrid.Rows.Count; i++)
+                {
+                    string strFreq = dtGrid.Rows[i][Constants.TableExport.TAN_SO].ToString();
+
+                    bool hasError = false;
+
+                    Dictionary<int, ArrayList> arrFreqByRow = utilities.GetFrequencyByRange(strStart, dStep, strFreq, i,
+                                                                                            ref hasError);
+
+                    // Add arraylist with no error
+                    if (!hasError && !allListRange.ContainsKey(i) && arrFreqByRow[i] != null && arrFreqByRow[i].Count > 0)
+                    {
+                        allListRange.Add(i, arrFreqByRow[i]);
+                    }
+                }
+
+                switch (valueCombobox)
+                {
+                    case (Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_TTKD_47_50):
+                        #region FREQ_TTKD_47_50
+                        // FM range
+                        // Get allListRage
+                        if (allListRange != null
+                            && allListRange.Count > 0)
+                        {
+                            for (int i = 0; i < allListRange.Count; i++)
+                            {
+                                // Create freq upper and lower
+                                ArrayList arrFreq = allListRange[i];
+
+                                ArrayList arrFreqTemp = new ArrayList();
+                                bool hasChange = false;
+                                for (int j = 0; j < arrFreq.Count; j++)
+                                {
+                                    double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                }
+                                if (hasChange)
+                                {
+                                    foreach (var list in arrFreqTemp)
+                                    {
+                                        if (!arrFreq.Contains(list))
+                                            arrFreq.Add(list);
+                                    }
+                                    allListRange[i] = arrFreq;
+                                }
+
+                            }
+                        }
+                        break;
+                        #endregion
+                    case (Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_TTKD_54_68):
+                        #region FREQ_TTKD_54_68
+                        // FM range
+                        // Get allListRage
+                        if (allListRange != null
+                            && allListRange.Count > 0)
+                        {
+                            for (int i = 0; i < allListRange.Count; i++)
+                            {
+                                // Create freq upper and lower
+                                ArrayList arrFreq = allListRange[i];
+
+                                ArrayList arrFreqTemp = new ArrayList();
+                                bool hasChange = false;
+                                for (int j = 0; j < arrFreq.Count; j++)
+                                {
+                                    double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                }
+                                if (hasChange)
+                                {
+                                    foreach (var list in arrFreqTemp)
+                                    {
+                                        if (!arrFreq.Contains(list))
+                                            arrFreq.Add(list);
+                                    }
+                                    allListRange[i] = arrFreq;
+                                }
+
+                            }
+                        }
+                        break;
+                        #endregion
+                    case (Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_PT_87_108):
+                        #region FREQ_PT_87_108
+                        // FM range
+                        // Get allListRage
+                        if (allListRange != null
+                            && allListRange.Count > 0)
+                        {
+                            for (int i = 0; i < allListRange.Count; i++)
+                            {
+                                // Create freq upper and lower
+                                ArrayList arrFreq = allListRange[i];
+
+                                ArrayList arrFreqTemp = new ArrayList();
+                                bool hasChange = false;
+                                for (int j = 0; j < arrFreq.Count; j++)
+                                {
+                                    double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                }
+                                if (hasChange)
+                                {
+                                    foreach (var list in arrFreqTemp)
+                                    {
+                                        if (!arrFreq.Contains(list))
+                                            arrFreq.Add(list);
+                                    }
+                                    allListRange[i] = arrFreq;
+                                }
+
+                            }
+                        }
+                        break;
+                        #endregion
+                    case (Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_DR_137_174):
+                        #region FREQ_DR_137_174
+                        // FM range
+                        // Get allListRage
+                        if (allListRange != null
+                            && allListRange.Count > 0)
+                        {
+                            for (int i = 0; i < allListRange.Count; i++)
+                            {
+                                // Create freq upper and lower
+                                ArrayList arrFreq = allListRange[i];
+
+                                ArrayList arrFreqTemp = new ArrayList();
+                                bool hasChange = false;
+                                for (int j = 0; j < arrFreq.Count; j++)
+                                {
+                                    double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                }
+                                if (hasChange)
+                                {
+                                    foreach (var list in arrFreqTemp)
+                                    {
+                                        if (!arrFreq.Contains(list))
+                                            arrFreq.Add(list);
+                                    }
+                                    allListRange[i] = arrFreq;
+                                }
+
+                            }
+                        }
+                        break;
+                        #endregion
+                    case (Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_TH_174_230):
+                        #region FREQ_TH_174_230
+                        // Analog, Digital TV
+                        // Get allListRage
+                        if (allListRange != null
+                            && allListRange.Count > 0)
+                        {
+                            for (int i = 0; i < allListRange.Count; i++)
+                            {
+                                // Create freq Begin and End frequency
+                                ArrayList arrFreq = allListRange[i];
+                                bool hasChange = false;
+                                if (dtGrid != null
+                                    && dtGrid.Rows != null
+                                    && dtGrid.Rows.Count > 0)
+                                {
+                                    ArrayList arrFreqTemp = new ArrayList();
+                                    Utilities util = new Utilities();
+                                    if (util.MachTDMB(dtGrid.Rows[i][Constants.TableExport.HO_HIEU].ToString().Trim()))
+                                    {
+                                        //arrFreqTemp = arrFreq;
+                                        for (int j = 0; j < arrFreq.Count; j++)
+                                        {
+                                            double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                        }
+                                        if (hasChange)
+                                        {
+                                            // Clear old data
+                                            arrFreq.Clear();
+
+                                            foreach (var list in arrFreqTemp)
+                                            {
+                                                if (!arrFreq.Contains(list))
+                                                    arrFreq.Add(list);
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (dtGrid.Rows[i][Constants.TableExport.MAU_GIAY_PHEP].ToString().Trim() == Constants.ValueConstant.THTS)
+                                        {
+                                            //arrFreqTemp = arrFreq;
+                                            for (int j = 0; j < arrFreq.Count; j++)
+                                            {
+                                                double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                            }
+                                            if (hasChange)
+                                            {
+                                                foreach (var list in arrFreqTemp)
+                                                {
+                                                    if (!arrFreq.Contains(list))
+                                                        arrFreq.Add(list);
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (arrFreq != null && arrFreq.Count == 2)
+                                            {
+                                                //arrFreqTemp = arrFreq;
+                                                // Create freq base
+                                                // fBase = ((f1 + f2)-1)/2;
+                                                double freqBase = ((Convert.ToDouble(arrFreq[0]) + Convert.ToDouble(arrFreq[1])) - 1000000) / 2;
+
+
+                                            }
+
+                                            if (hasChange)
+                                            {
+                                                foreach (var list in arrFreqTemp)
+                                                {
+                                                    if (!arrFreq.Contains(list))
+                                                        arrFreq.Add(list);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    if (hasChange)
+                                    {
+                                        allListRange[i] = arrFreq;
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                        #endregion
+                    case (Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_DR_400_470):
+                        #region FREQ_DR_400_470
+                        // FM range
+                        // Get allListRage
+                        if (allListRange != null
+                            && allListRange.Count > 0)
+                        {
+                            for (int i = 0; i < allListRange.Count; i++)
+                            {
+                                // Create freq upper and lower
+                                ArrayList arrFreq = allListRange[i];
+
+                                ArrayList arrFreqTemp = new ArrayList();
+                                bool hasChange = false;
+                                for (int j = 0; j < arrFreq.Count; j++)
+                                {
+                                    double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                }
+                                if (hasChange)
+                                {
+                                    foreach (var list in arrFreqTemp)
+                                    {
+                                        if (!arrFreq.Contains(list))
+                                            arrFreq.Add(list);
+                                    }
+                                    allListRange[i] = arrFreq;
+                                }
+
+                            }
+                        }
+                        break;
+                        #endregion
+                    case (Constants.FreqAndStep.FrequencyGEWDisplay.FREQ_TH_470_790):
+                        #region FREQ_TH_470_790
+                        // Analog, Digital TV
+                        // Get allListRage
+                        if (allListRange != null
+                            && allListRange.Count > 0)
+                        {
+                            for (int i = 0; i < allListRange.Count; i++)
+                            {
+                                // Create freq Begin and End frequency
+                                ArrayList arrFreq = allListRange[i];
+                                bool hasChange = false;
+                                if (dtGrid != null
+                                    && dtGrid.Rows != null
+                                    && dtGrid.Rows.Count > 0)
+                                {
+                                    ArrayList arrFreqTemp = new ArrayList();
+                                    if (dtGrid.Rows[i][Constants.TableExport.MAU_GIAY_PHEP].ToString().Trim() == Constants.ValueConstant.THTS)
+                                    {
+                                        //arrFreqTemp = arrFreq;
+                                        for (int j = 0; j < arrFreq.Count; j++)
+                                        {
+                                            double freqBase = Convert.ToDouble(arrFreq[j]);
+
+                                        }
+                                        if (hasChange)
+                                        {
+                                            foreach (var list in arrFreqTemp)
+                                            {
+                                                if (!arrFreq.Contains(list))
+                                                    arrFreq.Add(list);
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (arrFreq != null && arrFreq.Count == 2)
+                                        {
+                                            //arrFreqTemp = arrFreq;
+                                            // Create freq base
+                                            // fBase = ((f1 + f2)-1)/2;
+                                            double freqBase = ((Convert.ToDouble(arrFreq[0]) + Convert.ToDouble(arrFreq[1])) - 1000000) / 2;
+
+
+                                        }
+
+                                        if (hasChange)
+                                        {
+                                            foreach (var list in arrFreqTemp)
+                                            {
+                                                if (!arrFreq.Contains(list))
+                                                    arrFreq.Add(list);
+                                            }
+                                        }
+                                    }
+                                }
+                                if (hasChange)
+                                {
+                                    allListRange[i] = arrFreq;
+                                }
+
+                            }
+                        }
+                        break;
+                        #endregion
+                    default:
+                        //// Action default
+                        //dgDetailInformation.DataSource = objFormat.GetTCITableOutput((DataTable)dgDetailInformation.DataSource,
+                        //                                                     allListRange);
+                        break;
+
+                }
+
+                // Common action// Action default
+                dgGEDetailInformation.DataSource = null;
+                dgGEDetailInformation.DataSource = objFormat.GetGEFrequencyTableOutput(dtGrid, allListRange);
+
+                btnGEShow.Enabled = true;
+                buttonGExport.Enabled = true;
+                btnTranFormat.Enabled = true;
+                btnGEImport.Enabled = true;
+                btnFrequencies.Enabled = true;
+                btnGECheckError.Enabled = false;
+                btnGECorrectError.Enabled = false;
+                dgGEDetailInformation.ReadOnly = true;
+
+                // Set can export 
+                canExportCSV = true;
+                isMustCheckRS = false;
+
+            }
+            else
+            {
+                // Check error
+                btnGECheckError.Enabled = true;
+                btnGEImport.Enabled = true;
+                btnFrequencies.Enabled = false;
+                btnTranFormat.Enabled = false;
+                btnGEShow.Enabled = false;
+
+            }
+        }
+
+        private void btnGEShow_Click(object sender, EventArgs e)
+        {
+            //OutFormatBO objFormat = new OutFormatBO();
+            double dStep = Convert.ToDouble(cmbGEStep.SelectedItem.ToString());
+            if (dgGEDetailInformation != null && dgGEDetailInformation.DataSource != null)
+            {
+                List<string> list = new List<string>();
+                listGEWExport = new List<string>();
+                DataTable tbGEWInfo = (DataTable)dgGEDetailInformation.DataSource;
+                if (tbGEWInfo != null && tbGEWInfo.Rows.Count > 0)
+                {
+                    for (int i = 0; i < tbGEWInfo.Rows.Count; i++)
+                    {
+                        if (!isExportTran)
+                        {
+
+                            StringBuilder stbuilderRow = new StringBuilder();
+                            stbuilderRow.Append(tbGEWInfo.Rows[i][Constants.TableExport.GEWTABLE.TRANSMITTER_EXTERNAL_ID]);
+                            stbuilderRow.Append(";");
+                            stbuilderRow.Append(tbGEWInfo.Rows[i][Constants.TableExport.GEWTABLE.FREQUENCY_EXTERNAL_ID]);
+                            stbuilderRow.Append(";");
+                            stbuilderRow.Append(tbGEWInfo.Rows[i][Constants.TableExport.GEWTABLE.CENTRE_FREQUENCY]);
+                            stbuilderRow.Append(";");
+                            stbuilderRow.Append(tbGEWInfo.Rows[i][Constants.TableExport.GEWTABLE.BANDWIDTH]);
+                            stbuilderRow.Append(";");
+                            stbuilderRow.Append(tbGEWInfo.Rows[i][Constants.TableExport.GEWTABLE.CHANNEL_SPACE]);
+                            stbuilderRow.Append(";");
+
+                            stbuilderRow.Append(tbGEWInfo.Rows[i][Constants.TableExport.GEWTABLE.CHANNEL_NAME]);
+
+                            list.Add(stbuilderRow.ToString());
+                        }
+                        else
+                        {
+                            StringBuilder stbuilderRow = new StringBuilder();
+                            stbuilderRow.Append(tbGEWInfo.Rows[i][Constants.TableExport.GEWTABLE.TRANSMITTER_EXTERNAL_ID]);
+                            stbuilderRow.Append(";");
+                            stbuilderRow.Append(tbGEWInfo.Rows[i][Constants.TableExport.GEWTABLE.NAME]);
+                            stbuilderRow.Append(";");
+                            stbuilderRow.Append(tbGEWInfo.Rows[i][Constants.TableExport.GEWTABLE.TYPE]);
+                            stbuilderRow.Append(";");
+                            stbuilderRow.Append(tbGEWInfo.Rows[i][Constants.TableExport.GEWTABLE.LATITUDE]);
+                            stbuilderRow.Append(";");
+                            stbuilderRow.Append(tbGEWInfo.Rows[i][Constants.TableExport.GEWTABLE.LONGITUDE]);
+                            stbuilderRow.Append(";");
+
+                            stbuilderRow.Append(tbGEWInfo.Rows[i][Constants.TableExport.GEWTABLE.COMMENT]);
+
+                            list.Add(stbuilderRow.ToString());
+                        }
+                    }
+                }
+
+                foreach (var openForm in Application.OpenForms)
+                {
+                    if (openForm.Equals(form1))
+                    {
+
+                    }
+                    else
+                    {
+                        form1 = new Form2(list);
+                        //form1.Show();
+                    }
+                }
+                form1.Show();
+                listGEWExport = list;
+                // Enable button show
+                buttonGExport.Enabled = true;
+                btnGEShow.Enabled = true;
+                btnGEImport.Enabled = true;
+
+            }
+        }
+
+        private void buttonGExport_Click(object sender, EventArgs e)
+        {
+            if (dgGEDetailInformation != null && dgGEDetailInformation.DataSource != null)
+            {
+                //List<string> list = new List<string>();
+
+                //Utilities utils = new Utilities();
+                //DataTable dtRS = utils.GetTemplateTableRS();
+
+                listGEWExport = new List<string>();
+                DataTable tbGEWInfo = (DataTable)dgGEDetailInformation.DataSource;
+                string frequenceRange = cmbGEChooseFreq.SelectedItem.ToString();
+
+                foreach (var openForm in Application.OpenForms)
+                {
+                    if (openForm.Equals(GEWconfirmExport))
+                    {
+
+                    }
+                    else
+                    {
+                        GEWconfirmExport = new GEWConfirmExport(tbGEWInfo, isExportTran, frequenceRange);
+                        //form1.Show();
+                    }
+                }
+                GEWconfirmExport.Show();
+
+                // Enable button show
+                buttonGExport.Enabled = true;
+                btnGEShow.Enabled = true;
+                btnGEImport.Enabled = true;
+                btnTranFormat.Enabled = true;
+                btnFrequencies.Enabled = true;
+
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void imgTCI_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void imgRS_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gEWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnGEExport.SelectedIndex = 2;
+        }
+
+        private void gEWToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Excel file (*.xls)|*.xls";
+            dialog.Title = "Open file Excel convert.";
+
+            // Clean table dtSource
+            dtTCISource = null;
+
+            Utilities utilities = new Utilities();
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string sheetName = this.GetSheetName(dialog.FileName);
+                //string sheetName = "sheet1";
+                DataSet dsExcel = utilities.GetAllDataFromFileExcel(dialog.FileName, sheetName);
+
+                if (dsExcel != null
+                && dsExcel.Tables != null
+                && dsExcel.Tables.Count > 0
+                && dsExcel.Tables[0].Rows.Count > 0)
+                {
+                    //dgRSDetailInformation.DataSource = null;
+                    if (dgDetailInformation.DataSource != null)
+                    {
+                        dgDetailInformation.DataSource = null;
+                        dgDetailInformation.DataSource = dsExcel.Tables[0];
+                    }
+                    else
+                    {
+                        dgDetailInformation.DataSource = dsExcel.Tables[0];
+                    }
+                    if (allListRange != null && allListRange.Count > 0)
+                    {
+                        allListRange.Clear();
+                    }
+
+                    // dgDetailInformation.DataSource = dsExcel.Tables[0];
+
+                    // if (allListRange != null && allListRange.Count > 0)
+                    // {
+                    //     allListRange.Clear();
+                    // }
+                }
+
+                // Enable button
+                imgTCI.Visible = false;
+                btnCheckError.Enabled = true;
+                btnFormat.Enabled = false;
+                btnCorrectError.Enabled = false;
+                btnShow.Enabled = false;
+                button9.Enabled = false;
+                btnExport.Enabled = false;
+            }
         }
     }
 }

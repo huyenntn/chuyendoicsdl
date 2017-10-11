@@ -89,8 +89,9 @@
             this.labelProductName.Name = "labelProductName";
             this.labelProductName.Size = new System.Drawing.Size(271, 17);
             this.labelProductName.TabIndex = 19;
-            this.labelProductName.Text = "RFD Licensed Database to R&S and TCI";
+            this.labelProductName.Text = "RFD DB Convert";
             this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelProductName.Click += new System.EventHandler(this.labelProductName_Click);
             // 
             // labelVersion
             // 
@@ -103,6 +104,7 @@
             this.labelVersion.TabIndex = 0;
             this.labelVersion.Text = "Version 1.0";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelVersion.Click += new System.EventHandler(this.labelVersion_Click);
             // 
             // labelCopyright
             // 
@@ -141,6 +143,7 @@
             this.txtAbout.TabIndex = 23;
             this.txtAbout.TabStop = false;
             this.txtAbout.Text = "Test ";
+            this.txtAbout.TextChanged += new System.EventHandler(this.txtAbout_TextChanged);
             // 
             // okButton
             // 

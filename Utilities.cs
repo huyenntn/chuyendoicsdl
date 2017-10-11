@@ -25,84 +25,182 @@ namespace AVDApplication
             return arr;
         }
 
+        private static List<DataTable> SplitTable(DataTable originalTable, int batchSize)
+        {
+            List<DataTable> tables = new List<DataTable>();
+            int i = 0;
+            int j = 1;
+            DataTable newDt = originalTable.Clone();
+            newDt.TableName = "Table_" + j;
+            newDt.Clear();
+            foreach (DataRow row in originalTable.Rows)
+            {
+                DataRow newRow = newDt.NewRow();
+                newRow.ItemArray = row.ItemArray;
+                newDt.Rows.Add(newRow);
+                i++;
+                if (i == batchSize)
+                {
+                    tables.Add(newDt);
+                    j++;
+                    newDt = originalTable.Clone();
+                    newDt.TableName = "Table_" + j;
+                    newDt.Clear();
+                    i = 0;
+                }
+
+
+
+            }
+            if (newDt.Rows.Count > 0)
+            {
+                tables.Add(newDt);
+                j++;
+                newDt = originalTable.Clone();
+                newDt.TableName = "Table_" + j;
+                newDt.Clear();
+
+            }
+            return tables;
+        }
 
         static public bool exportDataToExcel(string tieude, DataTable dt, string sheetName)
         {
+            List<DataTable> tables = SplitTable(dt, 100);
             bool result = false;
-            //khoi tao cac doi tuong Com Excel de lam viec
-            Excel.Application xlApp;
-            Excel.Worksheet xlSheet;
-            Excel.Workbook xlBook;
-            //doi tuong Trống để thêm  vào xlApp sau đó lưu lại sau
-            object missValue = System.Reflection.Missing.Value;
-            //khoi tao doi tuong Com Excel moi
-            xlApp = new Excel.Application();
-            xlBook = xlApp.Workbooks.Add(missValue);
-            //su dung Sheet dau tien de thao tac
-            xlSheet = (Excel.Worksheet)xlBook.Worksheets.get_Item(1);
-            xlSheet.Name = sheetName;
-            //không cho hiện ứng dụng Excel lên để tránh gây đơ máy
-            xlApp.Visible = false;
-            int socot = dt.Columns.Count;
-            int sohang = dt.Rows.Count;
-            int i, j;
+            string filename = "";
+            int filenumber = 0;
+            bool thefirst = true;
+            var charsToRemove = new string[] { "xls"};
 
-            SaveFileDialog f = new SaveFileDialog();
-            f.Filter = "Excel file (*.xls)|*.xls";
-            if (f.ShowDialog() == DialogResult.OK)
+            foreach (var dt1 in tables)
             {
+                filenumber++;
+                DataTable splitdt = dt1;
+                //khoi tao cac doi tuong Com Excel de lam viec
+                Excel.Application xlApp;
+                Excel.Worksheet xlSheet;
+                Excel.Workbook xlBook;
+                //doi tuong Trống để thêm  vào xlApp sau đó lưu lại sau
+                object missValue = System.Reflection.Missing.Value;
+                //khoi tao doi tuong Com Excel moi
+                xlApp = new Excel.Application();
+                xlBook = xlApp.Workbooks.Add(missValue);
+                //su dung Sheet dau tien de thao tac
+                xlSheet = (Excel.Worksheet)xlBook.Worksheets.get_Item(1);
+                xlSheet.Name = sheetName;
+                //không cho hiện ứng dụng Excel lên để tránh gây đơ máy
+                xlApp.Visible = false;
+                int socot = splitdt.Columns.Count;
+                int sohang = splitdt.Rows.Count;
+                int i, j;
 
-
-                ////set thuoc tinh cho tieu de
-                xlSheet.get_Range("A1", Convert.ToChar(socot + 65) + "1");
-                //Excel.Range caption = xlSheet.get_Range("A1", Convert.ToChar(socot + 65) + "1");
-                //caption.Select();
-                //caption.FormulaR1C1 = tieude;
-                ////căn lề cho tiêu đề
-                //caption.HorizontalAlignment = Excel.Constants.xlCenter;
-                //caption.Font.Bold = true;
-                //caption.VerticalAlignment = Excel.Constants.xlCenter;
-                //caption.Font.Size = 15;
-                ////màu nền cho tiêu đề
-                //caption.Interior.ColorIndex = 20;
-                //caption.RowHeight = 30;
-                //set thuoc tinh cho cac header
-                Excel.Range header = xlSheet.get_Range("A1", Convert.ToChar(socot + 65) + "1");
-                header.Select();
-
-                header.HorizontalAlignment = Excel.Constants.xlLeft;
-                header.Font.Bold = true;
-                header.Font.Size = 10;
-                //điền tiêu đề cho các cột trong file excel
-                for (i = 0; i < socot; i++)
-                    xlSheet.Cells[1, i + 1] = dt.Columns[i].ColumnName;
-                //dien cot stt
-                //xlSheet.Cells[2, 1] = "STT";
-                //for (i = 0; i < sohang; i++)
-                //    xlSheet.Cells[i + 3, 1] = i + 1;
-                //dien du lieu vao sheet
-
-
-                for (i = 0; i < sohang; i++)
-                    for (j = 0; j < socot; j++)
+                if (thefirst)
+                {
+                    thefirst = false;
+                    SaveFileDialog f = new SaveFileDialog();
+                    f.Filter = "Excel file (*.xls)|*.xls";
+                    if (f.ShowDialog() == DialogResult.OK)
                     {
-                        xlSheet.Cells[i + 2, j + 1] = dt.Rows[i][j];
+                        ////set thuoc tinh cho tieu de
+                        xlSheet.get_Range("A1", Convert.ToChar(socot + 65) + "1");
+                        //Excel.Range caption = xlSheet.get_Range("A1", Convert.ToChar(socot + 65) + "1");
+                        //caption.Select();
+                        //caption.FormulaR1C1 = tieude;
+                        ////căn lề cho tiêu đề
+                        //caption.HorizontalAlignment = Excel.Constants.xlCenter;
+                        //caption.Font.Bold = true;
+                        //caption.VerticalAlignment = Excel.Constants.xlCenter;
+                        //caption.Font.Size = 15;
+                        ////màu nền cho tiêu đề
+                        //caption.Interior.ColorIndex = 20;
+                        //caption.RowHeight = 30;
+                        //set thuoc tinh cho cac header
+                        Excel.Range header = xlSheet.get_Range("A1", Convert.ToChar(socot + 65) + "1");
+                        header.Select();
 
+                        header.HorizontalAlignment = Excel.Constants.xlLeft;
+                        header.Font.Bold = true;
+                        header.Font.Size = 10;
+                        //điền tiêu đề cho các cột trong file excel
+                        for (i = 0; i < socot; i++)
+                            xlSheet.Cells[1, i + 1] = splitdt.Columns[i].ColumnName;
+                        //dien cot stt
+                        //xlSheet.Cells[2, 1] = "STT";
+                        //for (i = 0; i < sohang; i++)
+                        //    xlSheet.Cells[i + 3, 1] = i + 1;
+                        //dien du lieu vao sheet
+
+
+                        for (i = 0; i < sohang; i++)
+                            for (j = 0; j < socot; j++)
+                            {
+                                xlSheet.Cells[i + 2, j + 1] = splitdt.Rows[i][j];
+
+                            }
+                        //autofit độ rộng cho các cột
+                        for (i = 0; i < sohang; i++)
+                            ((Excel.Range)xlSheet.Cells[1, i + 1]).EntireColumn.AutoFit();
+
+                        //save file
+                        filename = f.FileName;
+                        xlBook.SaveAs(filename, Excel.XlFileFormat.xlWorkbookNormal, missValue, missValue, missValue, missValue, Excel.XlSaveAsAccessMode.xlExclusive, missValue, missValue, missValue, missValue, missValue);
+                        xlBook.Close(true, missValue, missValue);
+                        xlApp.Quit();
+                        
                     }
-                //autofit độ rộng cho các cột
-                for (i = 0; i < sohang; i++)
-                    ((Excel.Range)xlSheet.Cells[1, i + 1]).EntireColumn.AutoFit();
 
-                //save file
-                xlBook.SaveAs(f.FileName, Excel.XlFileFormat.xlWorkbookNormal, missValue, missValue, missValue, missValue, Excel.XlSaveAsAccessMode.xlExclusive, missValue, missValue, missValue, missValue, missValue);
-                xlBook.Close(true, missValue, missValue);
-                xlApp.Quit();
 
-                // release cac doi tuong COM
-                //releaseObject(xlSheet);
-                //releaseObject(xlBook);
-                //releaseObject(xlApp);
-                result = true;
+                    //release cac doi tuong COM
+                    releaseObject(xlSheet);
+                    releaseObject(xlBook);
+                    releaseObject(xlApp);
+                    result = true;
+                    
+                }
+                else
+                {
+                    xlSheet.get_Range("A1", Convert.ToChar(socot + 65) + "1");
+                    Excel.Range header = xlSheet.get_Range("A1", Convert.ToChar(socot + 65) + "1");
+                    header.Select();
+
+                    header.HorizontalAlignment = Excel.Constants.xlLeft;
+                    header.Font.Bold = true;
+                    header.Font.Size = 10;
+                    //điền tiêu đề cho các cột trong file excel
+                    for (i = 0; i < socot; i++)
+                        xlSheet.Cells[1, i + 1] = splitdt.Columns[i].ColumnName;
+                    //dien cot stt
+                    //xlSheet.Cells[2, 1] = "STT";
+                    //for (i = 0; i < sohang; i++)
+                    //    xlSheet.Cells[i + 3, 1] = i + 1;
+                    //dien du lieu vao sheet
+
+
+                    for (i = 0; i < sohang; i++)
+                        for (j = 0; j < socot; j++)
+                        {
+                            xlSheet.Cells[i + 2, j + 1] = splitdt.Rows[i][j];
+
+                        }
+                    //autofit độ rộng cho các cột
+                    for (i = 0; i < sohang; i++)
+                        ((Excel.Range)xlSheet.Cells[1, i + 1]).EntireColumn.AutoFit();
+
+                    foreach (var c in charsToRemove)
+                    {
+                        filename = filename.Replace(c, string.Empty);
+                    }
+                    //save file
+                    xlBook.SaveAs(filename +"("+filenumber+").xls", Excel.XlFileFormat.xlWorkbookNormal, missValue, missValue, missValue, missValue, Excel.XlSaveAsAccessMode.xlExclusive, missValue, missValue, missValue, missValue, missValue);
+                    xlBook.Close(true, missValue, missValue);
+                    xlApp.Quit();
+                    releaseObject(xlSheet);
+                    releaseObject(xlBook);
+                    releaseObject(xlApp);
+                    result = true;
+                }
+
             }
             return result;
         }
@@ -164,6 +262,26 @@ namespace AVDApplication
             return dtExport;
         }
 
+        public DataTable FreqencyChangeColumnName(DataTable dtExport)
+        {
+            ArrayList arrNewColumnName = new ArrayList();
+            arrNewColumnName.Add(Constants.TableExport.GEWTABLE.TRANSMITTER_EXTERNAL_ID);
+            arrNewColumnName.Add(Constants.TableExport.GEWTABLE.FREQUENCY_EXTERNAL_ID);
+            arrNewColumnName.Add(Constants.TableExport.GEWTABLE.CENTRE_FREQUENCY);
+            arrNewColumnName.Add(Constants.TableExport.GEWTABLE.BANDWIDTH);
+            arrNewColumnName.Add(Constants.TableExport.GEWTABLE.CHANNEL_SPACE);
+            arrNewColumnName.Add(Constants.TableExport.GEWTABLE.CHANNEL_NAME);
+            
+            if (dtExport != null && dtExport.Rows.Count > 0 && dtExport.Columns != null && dtExport.Columns.Count > 0)
+            {
+                for (int i = 0; i < dtExport.Columns.Count; i++)
+                {
+                    dtExport.Columns[i].ColumnName = arrNewColumnName[i].ToString(); ;
+                }
+            }
+            return dtExport;
+        }
+
         public DataTable FormatTableRS(DataTable dtExport)
         {
             if (dtExport != null && dtExport.Rows != null && dtExport.Rows.Count > 0)
@@ -189,6 +307,25 @@ namespace AVDApplication
                     dtExport.Rows[ro][Constants.TableExport.VI_DO] = "'" + dtExport.Rows[ro][Constants.TableExport.VI_DO];
 
                     dtExport.Rows[ro][Constants.TableExport.DON_VI_DIEU_CHE] = "'" + dtExport.Rows[ro][Constants.TableExport.DON_VI_DIEU_CHE];
+                }
+            }
+            return dtExport;
+        }
+
+        public DataTable FormatTableGEW(DataTable dtExport)
+        {
+            if (dtExport != null && dtExport.Rows != null && dtExport.Rows.Count > 0)
+            {
+                for (int ro = 0; ro < dtExport.Rows.Count; ro++)
+                {
+                    dtExport.Rows[ro][Constants.TableExport.GEWTABLE.TRANSMITTER_EXTERNAL_ID] = "'" + dtExport.Rows[ro][Constants.TableExport.GEWTABLE.TRANSMITTER_EXTERNAL_ID];
+                    dtExport.Rows[ro][Constants.TableExport.GEWTABLE.FREQUENCY_EXTERNAL_ID] = "'" + dtExport.Rows[ro][Constants.TableExport.GEWTABLE.FREQUENCY_EXTERNAL_ID];
+
+                    dtExport.Rows[ro][Constants.TableExport.GEWTABLE.CENTRE_FREQUENCY] = "'" + dtExport.Rows[ro][Constants.TableExport.GEWTABLE.CENTRE_FREQUENCY];
+                    dtExport.Rows[ro][Constants.TableExport.GEWTABLE.BANDWIDTH] = "'" + dtExport.Rows[ro][Constants.TableExport.GEWTABLE.BANDWIDTH];
+
+                    dtExport.Rows[ro][Constants.TableExport.GEWTABLE.CHANNEL_SPACE] = "'" + dtExport.Rows[ro][Constants.TableExport.GEWTABLE.CHANNEL_SPACE];
+                    dtExport.Rows[ro][Constants.TableExport.GEWTABLE.CHANNEL_NAME] = "'" + dtExport.Rows[ro][Constants.TableExport.GEWTABLE.CHANNEL_NAME];
                 }
             }
             return dtExport;
@@ -1495,6 +1632,40 @@ namespace AVDApplication
 
         }
 
+        public DataTable GetTemplateTableFrequency()
+        {
+            DataTable dtExcel = new DataTable();
+            dtExcel.TableName = "TableFrequencyCSV";
+            //dtExcel.Columns.Add(Constants.TableExport.ID);
+
+            dtExcel.Columns.Add(Constants.TableExport.GEWTABLE.TRANSMITTER_EXTERNAL_ID);
+            dtExcel.Columns.Add(Constants.TableExport.GEWTABLE.FREQUENCY_EXTERNAL_ID);
+            dtExcel.Columns.Add(Constants.TableExport.GEWTABLE.CENTRE_FREQUENCY);
+            dtExcel.Columns.Add(Constants.TableExport.GEWTABLE.BANDWIDTH);
+            dtExcel.Columns.Add(Constants.TableExport.GEWTABLE.CHANNEL_SPACE);
+            dtExcel.Columns.Add(Constants.TableExport.GEWTABLE.CHANNEL_NAME);
+
+            return dtExcel;
+
+        }
+
+        public DataTable GetTemplateTableTranmister()
+        {
+            DataTable dtExcel = new DataTable();
+            dtExcel.TableName = "TableFrequencyCSV";
+            //dtExcel.Columns.Add(Constants.TableExport.ID);
+
+            dtExcel.Columns.Add(Constants.TableExport.GEWTABLE.TRANSMITTER_EXTERNAL_ID);
+            dtExcel.Columns.Add(Constants.TableExport.GEWTABLE.NAME);
+            dtExcel.Columns.Add(Constants.TableExport.GEWTABLE.TYPE);
+            dtExcel.Columns.Add(Constants.TableExport.GEWTABLE.LATITUDE);
+            dtExcel.Columns.Add(Constants.TableExport.GEWTABLE.LONGITUDE);
+            dtExcel.Columns.Add(Constants.TableExport.GEWTABLE.COMMENT);
+
+            return dtExcel;
+
+        }
+
         public DataTable GetTemplateTable()
         {
             DataTable dtExcel = new DataTable();
@@ -1875,6 +2046,8 @@ namespace AVDApplication
             }
             return kinhvidoArr;
         }
+
+        
 
     }
 }

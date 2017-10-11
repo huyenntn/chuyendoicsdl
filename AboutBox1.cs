@@ -14,7 +14,7 @@ namespace AVDApplication
         {
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);
-            this.labelProductName.Text = "RFD Licensed Database to R&S and TCI";
+            this.labelProductName.Text = "RFD DB Convert";
             this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
             this.labelCopyright.Text = " Copyright @ by Dai Kiem soat - Trung tam 1";
             this.labelCompanyName.Text =" Cuc Tan so VTD";
@@ -112,6 +112,21 @@ namespace AVDApplication
         }
 
         private void abtAbout_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelProductName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAbout_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelVersion_Click(object sender, EventArgs e)
         {
 
         }

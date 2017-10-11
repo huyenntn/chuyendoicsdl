@@ -20,7 +20,7 @@ namespace AVDApplication
         public ConfirmExport(DataTable dtExport, bool isCSV, string nameSheet)
         {
             InitializeComponent();
-            Utilities utils =  new Utilities();
+            Utilities utils = new Utilities();
             sheetName = nameSheet;
             dtSourceExport = dtExport;
 

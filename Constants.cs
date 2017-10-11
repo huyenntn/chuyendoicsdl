@@ -9,7 +9,9 @@ namespace AVDApplication
     {
         public static class TableExport
         {
+            public const string STT = "STT";
             public const string ID = "ID";
+            public const string ID2 = "ID2";
             public const string GPNo = "Số GP";
             public const string MAU_GIAY_PHEP = "Mẫu giấy phép";
             public const string SO_THAM_CHIEU = "Số tham chiếu";
@@ -41,6 +43,12 @@ namespace AVDApplication
             public const string MIN_DIEU_CHE = "Giá trị tối thiểu của điều chế";
             public const string DON_VI_DIEU_CHE = "Đơn vị điều chế";
 
+            //For GEW
+
+            public const string MUC_DICH_SU_DUNG = "Mục đích sử dụng";
+            public const string DAI_LL = "Đài LL/Phương thức phát/Giờ LL";
+            public const string DAI_LL2 = "Đài LL/Phương thức phát/Giờ LL2";
+
             public static class RSTABLE
             {
                 public const string TRANSNAME = "'TRANSNAME";
@@ -67,7 +75,28 @@ namespace AVDApplication
                 public const string MODULATION = "'MODULATION";
                 public const string MOD_UNIT = "'MOD_UNIT";
             }
+            public static class GEWTABLE
+            {
+                public const string TRANSMITTER_EXTERNAL_ID = "Transmitter External ID";
+                public const string FREQUENCY_EXTERNAL_ID = "Frequency External ID";
+                public const string CENTRE_FREQUENCY = "Centre Frequency";
+                public const string BANDWIDTH = "Bandwidth";
+                public const string CHANNEL_SPACE = "Channel Space";
+                public const string CHANNEL_NAME = "Channel Name";
+                public const string NAME = "Name";
+                public const string TYPE = "Type";
+                public const string LATITUDE = "Latitude (deg)";
+                public const string LONGITUDE = "Longitude (deg)";
+                public const string COMMENT = "Comments";
+            }
 
+        }
+        public static class ValueDAILL
+        {
+            public const string _16K0F3E = "16K0F3E";
+            public const string _11K0F3E = "11K0F3E";
+            public const string _6K50 = "6K50";
+            public const string _6K5F3E = "6K5F3E";
         }
         public static class ValueConstant
         {
@@ -79,6 +108,7 @@ namespace AVDApplication
 
             public const string THTT = "PTTH tương tự";
             public const string THTS = "PTTH số";
+            public const string DAI_TAU = "Ðài tàu";
 
             public const string HOURVALUE = "°";
         }

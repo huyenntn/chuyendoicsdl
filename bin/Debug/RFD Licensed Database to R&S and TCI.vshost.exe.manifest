@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="RFD Licensed Database to R&amp;S and TCI.exe" size="655360">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="RFD Licensed Database to R&amp;S and TCI.exe" size="1732096">
       <assemblyIdentity name="RFD Licensed Database to R&amp;S and TCI" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>hjheyDnyqBYe+odRiSe1qgvpXBI=</dsig:DigestValue>
+        <dsig:DigestValue>whwHPuhrlf+Hr+kt7kcUsqfkpRU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

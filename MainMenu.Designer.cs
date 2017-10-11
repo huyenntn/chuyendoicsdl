@@ -51,6 +51,7 @@
             this.btnGEExport = new System.Windows.Forms.TabControl();
             this.tabRandS = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.imgTCI = new System.Windows.Forms.PictureBox();
             this.dgDetailInformation = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -71,6 +72,7 @@
             this.cmbChooseFreq = new System.Windows.Forms.ComboBox();
             this.tabTCI = new System.Windows.Forms.TabPage();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.imgRS = new System.Windows.Forms.PictureBox();
             this.dgRSDetailInformation = new System.Windows.Forms.DataGridView();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
@@ -91,6 +93,7 @@
             this.cmbRSChooseFreq = new System.Windows.Forms.ComboBox();
             this.tabGEW = new System.Windows.Forms.TabPage();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.imgGEW = new System.Windows.Forms.PictureBox();
             this.dgGEDetailInformation = new System.Windows.Forms.DataGridView();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
@@ -131,6 +134,7 @@
             this.btnGEExport.SuspendLayout();
             this.tabRandS.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgTCI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgDetailInformation)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -139,6 +143,7 @@
             this.groupBox3.SuspendLayout();
             this.tabTCI.SuspendLayout();
             this.groupBox18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgRS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRSDetailInformation)).BeginInit();
             this.groupBox13.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -147,6 +152,7 @@
             this.groupBox17.SuspendLayout();
             this.tabGEW.SuspendLayout();
             this.groupBox24.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgGEW)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgGEDetailInformation)).BeginInit();
             this.groupBox19.SuspendLayout();
             this.groupBox20.SuspendLayout();
@@ -205,6 +211,7 @@
             this.gEWToolStripMenuItem.Name = "gEWToolStripMenuItem";
             this.gEWToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.gEWToolStripMenuItem.Text = "GEW";
+            this.gEWToolStripMenuItem.Click += new System.EventHandler(this.gEWToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -254,6 +261,7 @@
             this.gEWToolStripMenuItem1.Name = "gEWToolStripMenuItem1";
             this.gEWToolStripMenuItem1.Size = new System.Drawing.Size(154, 22);
             this.gEWToolStripMenuItem1.Text = "GEW";
+            this.gEWToolStripMenuItem1.Click += new System.EventHandler(this.gEWToolStripMenuItem1_Click);
             // 
             // saveTCILogfileToolStripMenuItem
             // 
@@ -338,6 +346,7 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.imgTCI);
             this.groupBox6.Controls.Add(this.dgDetailInformation);
             this.groupBox6.Location = new System.Drawing.Point(7, 137);
             this.groupBox6.Name = "groupBox6";
@@ -345,6 +354,17 @@
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Details Information";
+            // 
+            // imgTCI
+            // 
+            this.imgTCI.Image = ((System.Drawing.Image)(resources.GetObject("imgTCI.Image")));
+            this.imgTCI.Location = new System.Drawing.Point(6, 19);
+            this.imgTCI.Name = "imgTCI";
+            this.imgTCI.Size = new System.Drawing.Size(745, 960);
+            this.imgTCI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.imgTCI.TabIndex = 1;
+            this.imgTCI.TabStop = false;
+            this.imgTCI.Click += new System.EventHandler(this.imgTCI_Click);
             // 
             // dgDetailInformation
             // 
@@ -549,6 +569,7 @@
             // 
             // groupBox18
             // 
+            this.groupBox18.Controls.Add(this.imgRS);
             this.groupBox18.Controls.Add(this.dgRSDetailInformation);
             this.groupBox18.Location = new System.Drawing.Point(6, 140);
             this.groupBox18.Name = "groupBox18";
@@ -556,6 +577,17 @@
             this.groupBox18.TabIndex = 2;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Details Information";
+            // 
+            // imgRS
+            // 
+            this.imgRS.Image = ((System.Drawing.Image)(resources.GetObject("imgRS.Image")));
+            this.imgRS.Location = new System.Drawing.Point(7, 19);
+            this.imgRS.Name = "imgRS";
+            this.imgRS.Size = new System.Drawing.Size(744, 961);
+            this.imgRS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.imgRS.TabIndex = 1;
+            this.imgRS.TabStop = false;
+            this.imgRS.Click += new System.EventHandler(this.imgRS_Click);
             // 
             // dgRSDetailInformation
             // 
@@ -756,6 +788,7 @@
             // 
             // groupBox24
             // 
+            this.groupBox24.Controls.Add(this.imgGEW);
             this.groupBox24.Controls.Add(this.dgGEDetailInformation);
             this.groupBox24.Location = new System.Drawing.Point(3, 137);
             this.groupBox24.Name = "groupBox24";
@@ -763,6 +796,16 @@
             this.groupBox24.TabIndex = 3;
             this.groupBox24.TabStop = false;
             this.groupBox24.Text = "Details Information";
+            // 
+            // imgGEW
+            // 
+            this.imgGEW.Image = ((System.Drawing.Image)(resources.GetObject("imgGEW.Image")));
+            this.imgGEW.Location = new System.Drawing.Point(7, 20);
+            this.imgGEW.Name = "imgGEW";
+            this.imgGEW.Size = new System.Drawing.Size(744, 338);
+            this.imgGEW.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.imgGEW.TabIndex = 1;
+            this.imgGEW.TabStop = false;
             // 
             // dgGEDetailInformation
             // 
@@ -836,6 +879,7 @@
             this.btnFrequencies.TabIndex = 1;
             this.btnFrequencies.Text = "Format Frequencies CSV";
             this.btnFrequencies.UseVisualStyleBackColor = true;
+            this.btnFrequencies.Click += new System.EventHandler(this.btnFrequencies_Click);
             // 
             // btnGECheckError
             // 
@@ -866,6 +910,7 @@
             this.btnGEShow.TabIndex = 2;
             this.btnGEShow.Text = "Show";
             this.btnGEShow.UseVisualStyleBackColor = true;
+            this.btnGEShow.Click += new System.EventHandler(this.btnGEShow_Click);
             // 
             // buttonGExport
             // 
@@ -876,6 +921,7 @@
             this.buttonGExport.TabIndex = 1;
             this.buttonGExport.Text = "Export";
             this.buttonGExport.UseVisualStyleBackColor = true;
+            this.buttonGExport.Click += new System.EventHandler(this.buttonGExport_Click);
             // 
             // btnGEImport
             // 
@@ -1130,17 +1176,19 @@
             this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.btnGEExport);
             this.Controls.Add(this.menuStrip1);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "MainMenu";
-            this.Text = "RFD Licensed Database to R&S and TCI";
+            this.Text = "RFD DB Convert";
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.btnGEExport.ResumeLayout(false);
             this.tabRandS.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgTCI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgDetailInformation)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -1150,6 +1198,7 @@
             this.groupBox3.PerformLayout();
             this.tabTCI.ResumeLayout(false);
             this.groupBox18.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgRS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRSDetailInformation)).EndInit();
             this.groupBox13.ResumeLayout(false);
             this.groupBox14.ResumeLayout(false);
@@ -1159,6 +1208,7 @@
             this.groupBox17.PerformLayout();
             this.tabGEW.ResumeLayout(false);
             this.groupBox24.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgGEW)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgGEDetailInformation)).EndInit();
             this.groupBox19.ResumeLayout(false);
             this.groupBox20.ResumeLayout(false);
@@ -1279,5 +1329,8 @@
         private System.Windows.Forms.GroupBox groupBox24;
         private System.Windows.Forms.DataGridView dgGEDetailInformation;
         private System.Windows.Forms.ComboBox cmbGEChooseFreq;
+        private System.Windows.Forms.PictureBox imgTCI;
+        private System.Windows.Forms.PictureBox imgRS;
+        private System.Windows.Forms.PictureBox imgGEW;
     }
 }
